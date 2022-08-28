@@ -1,0 +1,257 @@
+$H_botBorderSize: 1.2px;
+$header_heightSmall: 70px;
+$header_heightBig: 100px; // 480px and onwards
+header.Header{
+    z-index: 7;
+    position: fixed !important;
+    width: calc(100% - 44px);
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ffff;
+    height: $header_heightSmall;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    //border-bottom: $H_botBorderSize solid #BFBFBF;
+    position: fixed !important;
+
+    &::after, &::before{
+        content: " ";
+        position: absolute;
+        top: 0px;
+        height: 100%;
+        width: 100%;
+        background: #fff;
+        border-bottom: $H_botBorderSize solid #fff;
+    }
+
+    &::after{
+        left: -100%;
+    }
+
+    &::before{
+        left: 100%;
+    }
+
+    & .HeaderBorderLine{
+        position: absolute;
+        bottom: -0.5px;
+        width: 100%;
+        height: $H_botBorderSize;
+        background: #BFBFBF;
+        left: 0%;
+    }
+}
+
+.H_leftCon {
+    color: #000;
+
+   & ul.ulLogo {
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+        
+        & li.liLogo{
+            overflow: hidden;
+            height: 30px;
+            width: auto;
+            font-size: 20px;
+            display: inline-block;
+            &:nth-child(2){
+                color: #DB0626 !important;
+            }
+
+            & .logoP{
+                font-size: inherit;
+                display: grid;
+                justify-items: center;
+                align-items: center;
+            }
+        }
+
+   }
+}
+
+.H_midCon{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-content: center;
+
+    & .pMidWrap{
+        overflow: hidden;
+        height: 5.6vw;
+        width: auto;
+        //border: 1px solid red;
+
+
+        &:nth-child(1){
+            color: #DB0626;
+        }
+
+        & p {
+            //border: 1px solid green;
+            line-height: 0.98;
+            padding: 0px;
+            margin: 0px;
+            font-size: 5vw;
+            height: auto;
+            display: grid;  
+            grid-template-columns: 1fr;
+        }
+        & p:first-child {
+            color: inherit;
+        } 
+    }
+}
+
+.H_rightCon{
+    height: auto;
+    width: auto;
+    justify-self: end;
+
+    & .menuCon{
+        cursor: pointer;
+        height: 24px;
+        width: 22px;
+        overflow: visible;
+        & .menuLine{
+            right: 0%;
+            top: 1px;
+            position: absolute;
+            height:2.2px;
+            width: 100%;
+            background-color: rgba(0,0,0,1);
+        }
+
+        & .menuLine:nth-child(2){
+            width: 60%;
+            height: 2.4px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,1);
+
+        }
+        & .menuLine:last-child{
+            top: 100%;
+            transform: translateY(-4px);
+            background-color: rgba(0,0,0,1);
+        }
+    }
+}
+
+.H_rightprogressStatic{ 
+ position: absolute;
+ top: 100%;
+ height: calc(100vh - $header_heightSmall);
+ right: 0;
+ width: 1px;
+    & .H_rightprogressContainer{
+        overflow: hidden;
+        width: 100%;
+        height: calc(50vh - 100px);
+        position: absolute;
+        top: 50%;
+        left: 0px;
+        transform: translateY(-50%);
+        background-color: #BFBFBF;
+        border: none;
+
+        & .H_rightProgress{
+            position: absolute;
+            left: 0px;
+            height: 100%;
+            width: 200%;
+            background:#fb1537;
+            top: -100%;
+        }
+
+        & .H_rightProgressInit{
+            position: absolute;
+            left: 0px;
+            height: 100%;
+            width: 200%;
+            background-color: #F9F9F9;
+            //background-color: red;
+            top: -100%;
+        }
+    }
+}
+
+@media only screen and (min-width: 320px) {
+
+    .H_leftCon {
+       & ul.ulLogo {
+            & li.liLogo{
+                font-size: 24px;
+                height: 34px;
+            }
+       }
+    }
+
+    .H_midCon{
+         & .pMidWrap{
+                height: 4.8vw;
+            & p {
+                font-size: 4.2vw;
+            }
+        }
+
+    }
+
+    
+}
+
+// header fontSize and gap adjustment
+@media only screen and (min-width: 480px) {
+    header.Header{
+        height: $header_heightBig;
+        width: calc(100% - 60px);
+    }
+
+    .H_midCon{
+        & .pMidWrap{
+            height: 20px;
+            & p {
+                    line-height: 0.98;
+                    font-size: 20px;
+            }
+    }
+
+
+}
+    
+}
+
+@media only screen and (min-width: 769px) {
+    header.Header{
+        height: $header_heightBig;
+        width: calc(100% - 70px);
+    }
+    
+}
+
+
+@media only screen and (min-width: 1024px) {
+    header.Header{
+        height: $header_heightBig;
+        width: calc(100% - 100px);
+    }
+
+    .H_rightprogressStatic{
+        width: 2px;
+    }
+    
+}
+
+@media only screen and (min-width: 1200px) {
+    header.Header{
+        height: $header_heightBig;
+        width: calc(100% - 160px);
+    }    
+}
+
+// for 1200px ++

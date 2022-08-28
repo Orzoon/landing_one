@@ -1,0 +1,610 @@
+
+.allCont_wrapper{
+    z-index: 4;
+    grid-area: 2/1/3/2;
+    margin-top: 80px;
+    padding-bottom: 220px;
+    justify-self: center;
+    width: calc(60vw); // width of card as well
+    //border: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 360px;
+}
+
+/* INDIVIDUAL CATEGORY SECTION */
+.common_cat_conSection{
+    //border: 1px solid green;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    //grid-row-gap: 30px;
+    grid-row-gap: 15vw;
+
+    & .commonCard{
+        height: calc(80vw - 18px);
+        //margin-top: 100%;
+        //border: 1px solid #ddd;
+    }
+    //--> equiv--fixing headingCardHeight
+    & .heading_card{
+        //background: red;
+        // height back to content
+       // height: auto;
+       height: fit-content;
+        
+
+        & .common_HeadingCon{
+            overflow: hidden;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: auto 20px auto;
+            grid-template-areas:    "h5"
+                                    "."
+                                    "h2";
+           
+
+
+            /**** FIX ****/
+            & .initCatHCon{
+                overflow: hidden;
+              
+                grid-area: h5;
+                height: auto;
+                width: 100%;
+                & h5 {
+                    color: #DB0626;
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+            }
+
+
+            & .initCatH2Con{
+                overflow: hidden;
+                height: auto;
+                grid-area: h2;
+                & h2 {
+                    font-size: 30px;
+                    font-weight: 700;
+                }
+            }
+
+            //***NORMAL**//
+                                    
+            & h5 {
+                grid-area: h5;
+                color: #DB0626;
+                font-weight: 400;
+                font-size: 14px;
+            }
+            & h2 {
+                grid-area: h2;
+                font-size: 30px;
+                font-weight: 700;
+            }
+        }
+    }
+
+
+    // ---common Card styles for image and description
+    & .commonCard{
+        pointer-events: none;
+        &:hover .cardDescription{
+            opacity: 1;
+            transition: all 0.3s ease-in;
+        }
+        // for initial loading
+        & .imageCon{
+            overflow: hidden;
+            height: 100%;
+            width: 100%;
+            
+            & .cCardinit{
+                z-index: 8;
+                background-color: #F9F9F9;
+                background-color: #BB0E29;
+                position: absolute;
+                top: -100%;
+                left: 0%;
+                height: 100%;
+                width: 110%;
+                pointer-events: none;
+            }
+            img{
+                opacity: 0;
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                filter:grayscale(100%);
+                transition: all 0.3s linear;
+                &:hover {
+                    //filter:grayscale(30%);
+                    transition: all 0.3s linear;
+                    transform: scale(1.04);
+                }
+            }
+        }
+        & .cardDescriptionCon{
+            opacity: 0;
+            z-index: 5;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            height: auto;
+            width: 100%;
+            padding: 10px;
+            max-height: 100%;
+            overflow: hidden;
+            color: #fff;
+
+            & p {
+                opacity: 0;
+                font-size: 15px;
+                line-height: 15px;
+                font-weight: 400;
+                transition: all 0.3 ease-in;
+            }
+
+            & .initCDCon{
+                overflow: hidden;
+                height: auto;
+                width: 100%;
+                & h3{
+                    font-size: 19px;
+                }
+            }
+            & h3{
+                font-size: 19px;
+            }
+        }
+    }
+}
+
+/** --BG_TEXTSTYLES-- **/
+.bgScrollTextCon{
+    position: fixed;
+    z-index: 3;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%; // giving the min height later on
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-items: center;
+    & .catHeadingScrollView{
+        overflow: hidden;
+        width: 100%;
+        min-height: 150px; // heading font-height+ few pxls
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        
+        & ul.catScrollHeadings{
+            padding: 0px;
+            margin: 0px;
+            position: absolute;
+            width: 100%;
+            min-height: 170px;
+            height: auto;
+            list-style-type: none;
+            left: 0px;
+            top: 0px;
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-row-gap: 20px;
+            & li.catScrollList{
+                position: absolute;
+                top: 100%;
+                left: 0%;
+                width: 100%;
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: center;
+                align-items: center;
+                height: 60px; // same height as h1
+
+                & h1.scrollHeading{
+                    font-size: 60px;
+                    color: #fff;
+                    text-shadow: 1px 1px 2px rgb(207, 206, 206);
+                }
+            } 
+            
+        }
+    }
+
+}
+
+@media only screen and (min-width: 480px) {
+    .allCont_wrapper{
+        margin-top: 130px;
+    }
+
+    /* INDIVIDUAL CATEGORY SECTION */
+    .common_cat_conSection{
+        & .commonCard {
+            height: calc(66vw - 18px);
+        }
+
+        //--> equiv--fixing headingCardHeight
+        & .heading_card{
+            // height back to content
+            //height: auto;
+            height: fit-content;
+        
+            & .common_HeadingCon{  
+                
+                
+                & h5 {
+                    font-size: 14px;
+                }
+        
+                & h2 {
+                    grid-area: h2;
+                    font-size: 40px;
+                }
+
+                /**** FIX ****/
+                & .initCatHCon{
+                    & h5 {
+                        font-size: 14px;
+                    }
+                }
+
+
+                & .initCatH2Con{
+                    & h2 {
+                        font-size: 40px;
+                    }
+                }
+            }
+        }
+
+        // ---common Card styles for image and description
+        & .commonCard{
+            & .cardDescriptionCon{
+                padding: 15px;
+                & p {
+                    opacity: 0;
+                    font-size: 15px;
+                    line-height: 15px;
+                    font-weight: 400;
+                    transition: all 0.3 ease-in;
+                }
+
+                & .initCDCon{
+                    & h3{
+                        font-size: 22px;
+                    }
+                }
+                & h3{
+                    // no styles
+                    font-size: 22px;
+                }
+    
+            }
+        }
+    }
+
+    /** --BG_TEXTSTYLES-- **/
+    .bgScrollTextCon{
+        & .catHeadingScrollView{
+            min-height: 110px; // heading font-height+ few 40pxls
+            & ul.catScrollHeadings{
+                & li.catScrollList{
+                    height: 70px; // same height as h1
+                    & h1.scrollHeading{
+                        font-size: 70px;
+                    }
+                } 
+            }
+        }
+    }
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+    .allCont_wrapper{
+        width: calc(66.66% + 100px); // + padding to fix
+        //border: 1px solid #ddd;
+        grid-row-gap: 460px;
+    }
+    /* INDIVIDUAL CATEGORY SECTION */
+    .common_cat_conSection{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        //grid-auto-rows: 35vw;
+        //grid-row-gap: 30px;
+        grid-row-gap: 15vw;
+
+        & .commonCard{
+            width: calc(80%);
+            height: calc(33vw);
+        }
+
+        & .commonCard:nth-child(odd){
+            justify-self: center;
+        }
+        & .commonCard:nth-child(even){
+            justify-self: center;
+            margin-left: 24px;
+        }
+        //--> equiv--fixing headingCardHeight
+        & .heading_card{
+            // height back to content
+            //height: auto;
+            
+            & .common_HeadingCon{
+                justify-items: end;
+                // altering in two columns
+                /**** FIX ****/
+
+                & .catHeading {
+                    font-size: 16px;
+               
+                }
+
+                & .initCatHCon{
+                    display: grid;
+                    grid-template-columns: 1fr;
+                    justify-items: end;
+                    & h5 {
+                        font-size: 16px;
+                    }
+                }
+            }
+
+            & .headingCardEvenCon{
+                justify-items: start;
+            }
+
+        }
+        // grid----heading--even
+        & .gridEvenHeading{
+            grid-area: 1/2/2/3;
+        }
+
+        // ---common Card styles for image and description
+        & .commonCard{
+            &:hover .cardDescription{
+                opacity: 1;
+                transition: all 0.4s ease-in-out;
+            }
+
+            // pop out the container
+            &:hover .cardDescriptionCon{
+                left: -50px;
+                bottom: -50px;
+                background: #BB0E29;
+                transition: all 0.4s ease-in-out;
+            }
+
+            & .cardDescriptionCon{
+                transition: all 0.4s ease-in-out;
+                padding: 25px;
+
+                & p {
+                    transition: all 0.4s ease-in-out;
+                    opacity: 0;
+                    font-size: 16px;
+                    line-height: 16px;
+                    font-weight: 400;
+                }
+                & .initCDCon{
+                    & h3{
+                        font-size: 25px;
+                    }
+                }
+                & h3{
+                    font-size: 25px;
+                }
+
+            }
+        }
+
+      
+
+    }
+
+
+    /** --BG_TEXTSTYLES-- **/
+    .bgScrollTextCon{
+        & .catHeadingScrollView{
+            min-height: 135px; // heading font-height+ few 40pxls
+            & ul.catScrollHeadings{
+                & li.catScrollList{
+                    height: 95px; // same height as h1
+                    & h1.scrollHeading{
+                        font-size: 95px;
+                    }
+                } 
+            }
+        }
+    }
+
+
+
+}
+
+@media only screen and (min-width: 1200px) {
+    
+    /* INDIVIDUAL CATEGORY SECTION */
+    .common_cat_conSection{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        //grid-auto-rows: 35vw;
+        //grid-row-gap: 30px;
+        //grid-row-gap: 15vw;
+
+        & .commonCard{
+            width: calc(80%);
+            height: calc(33vw);
+        }
+
+        & .commonCard:nth-child(odd){
+            justify-self: center;
+        }
+        & .commonCard:nth-child(even){
+            justify-self: center;
+            margin-left: 30px;
+        }
+        //--> equiv--fixing headingCardHeight
+        & .heading_card{
+            // height back to content
+            height: auto;
+        
+            & .common_HeadingCon{
+                justify-items: end;
+                & .catHeading {
+                    font-size: 18px;
+                }
+                & .catName {
+                    font-size: 55px;
+                    font-weight: 700;
+                }
+                /**** FIX ****/
+                & .initCatHCon{
+                    & h5 {
+                        font-size: 18px;
+                    }
+                }
+
+
+                & .initCatH2Con{
+                    & h2 {
+                        font-size: 55px;
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            
+            & .headingCardEvenCon{
+                justify-items: start;
+            }
+        }
+ 
+        // ---common Card styles for image and description
+        & .commonCard{
+            &:hover .cardDescription{
+                opacity: 1;
+                transition: all 0.4s ease-in-out;
+            }
+
+            // pop out the container
+            &:hover .cardDescriptionCon{
+                left: -50px;
+                bottom: -50px;
+                background: #BB0E29;
+                transition: all 0.4s ease-in-out;
+            }
+
+
+
+
+            & .cardDescriptionCon{
+                transition: all 0.4s ease-in-out;
+                padding: 25px;
+
+                & p {
+                    transition: all 0.4s ease-in-out;
+                    opacity: 0;
+                    font-size: 16px;
+                    line-height: 16px;
+                    font-weight: 400;
+                }
+                & .initCDCon{
+                    & h3{
+                        font-size: 30px;
+                    }
+                }
+                & h3{
+                    font-size: 30px;
+                }
+
+            }
+        }
+
+      
+
+    }
+
+    /** --BG_TEXTSTYLES-- **/
+    .bgScrollTextCon{
+        & .catHeadingScrollView{
+            min-height: 170px; // heading font-height+ few 40pxls
+            & ul.catScrollHeadings{
+                & li.catScrollList{
+                    height: 130px; // same height as h1
+                    & h1.scrollHeading{
+                        font-size: 130px;
+                    }
+                } 
+            }
+        }
+    }
+
+
+}
+
+
+@media only screen and (min-width: 1400px) {
+    
+    /* INDIVIDUAL CATEGORY SECTION */
+    .common_cat_conSection{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-auto-rows: auto;
+        //grid-auto-rows: 35vw;
+        //grid-row-gap: 30px;
+        & .commonCard{
+            width: calc(80%);
+            height: calc(33vw);
+        }
+
+        & .commonCard:nth-child(odd){
+            justify-self: center;
+        }
+        & .commonCard:nth-child(even){
+            justify-self: end;
+            margin-right: 14px;
+        }
+ 
+    }
+
+    /** --BG_TEXTSTYLES-- **/
+    .bgScrollTextCon{
+        & .catHeadingScrollView{
+            min-height: 190px; // heading font-height+ few 40pxls
+            & ul.catScrollHeadings{
+                & li.catScrollList{
+                    height: 150px; // same height as h1
+                    & h1.scrollHeading{
+                        font-size: 150px;
+                    }
+                } 
+            }
+        }
+    }
+
+
+
+}
+
+
+
+

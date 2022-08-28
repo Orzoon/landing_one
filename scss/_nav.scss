@@ -1,0 +1,324 @@
+$navpadding: 50px;
+nav.navMainContainer{
+    padding: $navpadding;
+    z-index: 8;
+    position: fixed;
+    top: 0;
+    left: 100%;
+    min-height: 430px; 
+    height: 100%;
+    width: 100%;
+    background: rgb(187,14,41);
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    display: none;
+    //left: 0;
+
+    & .navInnerCircle{
+        position: absolute;
+        left: 50px;
+        top: 0px;
+        width: 100vh;
+        height: 100vh;
+        border-radius: 50%;
+        background: linear-gradient(to bottom left, rgb(167,7,32), rgb(187,14,41));
+    }
+
+    & button.closeBtn{
+        padding: 0px;
+        display: block;
+        z-index: 999;
+        position: absolute;
+        right: 50px;
+        top: $navpadding;
+        height: 25px;
+        width: 25px;
+        background: none;
+        border: none;
+        cursor: pointer;
+
+        &:active {
+            border: none;
+            background-color: none;
+            outline: none;
+        }
+        &::after, &::before{
+            content: " ";
+            position: absolute;
+            height: 2.5px;
+            width: 100%;
+            top: 50%;
+            left: 0px;
+            background: #fff;
+        }
+
+        &::after{
+            transform: rotate(45deg);
+        }
+
+        &::before{
+            transform: rotate(-45deg);
+        }
+
+    }
+
+    & ul.navMenu {
+        list-style-type: none;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-row-gap: 18px;
+        li.navList {
+            
+            overflow: hidden;
+            cursor: pointer;
+            height: auto;
+            width: 100%;
+            padding: 3px;
+            font-size: 22px;
+            font-weight: 500;
+            color: #fff;
+            display: grid;
+            grid-template-columns:auto 20px 1fr;
+            grid-column-gap: 8px;
+          
+            &:hover .line{
+                transition: all 0.2s ease-in-out;
+                width: 30px;
+            }
+            & .line {
+                transition: all 0.3s ease-in-out;
+                position: relative;
+                width: 0px;
+                height: 100%;
+                //@function: blue;
+                &::after{
+                    content: " ";
+                    position: absolute;
+                    width: 90%;
+                    top: 30%;
+                    left: 0px;
+                    transform: translateY(-50%);
+                    background: #fff;
+                    height: 1.5px;
+                }
+            }
+
+            & p.navNumP{
+                font-size: 12px;
+                display: grid;
+                align-items: center;
+            }
+            
+            & p.navP {
+                display: grid;
+                align-items: start;
+            }
+
+        }
+    }
+
+    .navFooter{
+        padding: 30px 0px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 5px;
+        width: calc(100% - 50px - 50px);
+        height: auto;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+
+
+        & p {
+            overflow: hidden;
+            font-size: 16px;
+            color: #fff;
+
+            & span {
+                font-size: 24px;
+                text-transform: uppercase;
+            }
+        }
+        & .firstPFooter {
+            font-size: 10px;
+
+            & span {
+                font-size: 10px;
+            }
+        }
+        .footerLine{
+            position: relative;
+            width: 100%;
+            height: 20px;
+            //border: 1px solid red;
+            &::after {
+                content: " ";
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 100%;
+                left: 0px;
+                height: 1.5px;
+                //background-color: #fff;
+            }
+
+            & .flineFix{
+                width: 100%;
+                z-index: 2;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                height: 1.5px;
+                background: #fff;
+            }
+        }
+        p.lastPFooter{
+            justify-self: end;
+        }
+    }
+
+}
+
+@media only screen and (min-width: 320px){
+    .navFooter{
+        & p {
+            font-size: 16px;
+            & span {
+                font-size: 24px;
+                text-transform: uppercase;
+            }
+        }
+        & .firstPFooter {
+            font-size: 10px !important;
+
+            & span {
+                font-size: 13px !important;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 480px){
+    .navFooter{
+        & p {
+            font-size: 16px;
+            & span {
+                font-size: 24px;
+                text-transform: uppercase;
+            }
+        }
+        & .firstPFooter {
+            font-size: 16px !important;
+
+            & span {
+                font-size: 24px !important;
+            }
+        }
+    }
+}
+// padding769
+$navpadding769: 70px;
+@media only screen and (min-width: 769px){
+    nav.navMainContainer{
+        padding: $navpadding769;
+    
+        & .navInnerCircle{
+            position: absolute;
+            left: $navpadding769;
+        }
+    
+        & button.closeBtn{
+            right: $navpadding769;
+            top: $navpadding769;
+        }
+    
+        & ul.navMenu {
+            grid-row-gap: 22px;
+            li.navList {
+                font-size: 28px;
+                font-weight: 500;
+                grid-column-gap:20px;
+             
+                & .line {
+                    transition: all 0.3s ease-in-out;
+                    position: relative;
+                    width: 0px;
+                    height: 100%;
+                }
+    
+                & p.navNumP{
+                    font-size: 12px;
+                    display: grid;
+                    align-items: center;
+                }
+                
+                & p.navP {
+                    display: grid;
+                    align-items: start;
+                }
+    
+            }
+        }
+    
+        .navFooter{
+            bottom: 5px;
+            width: calc(100% - $navpadding769 - $navpadding769);
+        }
+    
+    }
+}
+
+
+$paddingMinHeight: 20px;
+@media only screen and (max-height: 430px){
+    .navFooter{
+        display: none !important;
+    }
+    nav.navMainContainer{
+        padding: $paddingMinHeight;
+    
+        & .navInnerCircle{
+            position: absolute;
+            left: $paddingMinHeight;
+        }
+    
+        & button.closeBtn{
+            right: $paddingMinHeight;
+            top: $paddingMinHeight;
+        }
+    
+        & ul.navMenu {
+            grid-row-gap: 10px;
+            li.navList {
+                font-size: 18px;
+                font-weight: 500;
+                grid-column-gap:20px;
+             
+                & .line {
+                    transition: all 0.3s ease-in-out;
+                    position: relative;
+                    width: 0px;
+                    height: 100%;
+                }
+    
+                & p.navNumP{
+                    font-size: 12px;
+                    display: grid;
+                    align-items: center;
+                }
+                
+                & p.navP {
+                    display: grid;
+                    align-items: start;
+                }
+    
+            }
+        }
+    
+    
+    }
+}

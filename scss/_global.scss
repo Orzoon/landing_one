@@ -1,0 +1,83 @@
+*, *::after, *::before {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    overflow-x: hidden;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #F9F9F9;
+}
+
+.loader{
+    z-index: 10;
+    position: absolute;
+    height: 110vh;
+    width: 100vw;
+    left: 0px;
+}
+.loader1{
+    z-index: 9;
+    background-color: #fff;
+    top: 0vh;
+}
+
+.loader2{
+    z-index: 10;
+    background: #BB0E29;
+    top: 100vh;
+}
+// mainContainer for wrapping the content
+.mainContainer{
+    width: 100%;
+    min-height: 105vh;
+    padding: 0px 22px;
+    background-color: #F9F9F9;
+    display: grid;
+    grid-template-columns: 1fr;
+    // header height fill first row
+    grid-template-rows:  70px 1fr;
+    //left: 50%;
+    //transform: translateX(-50%);
+}
+
+
+@media only screen and (min-width: 480px){
+    .mainContainer{
+        padding: 0px 30px;
+    }
+}
+
+
+@media only screen and (min-width: 769px){
+    .mainContainer{
+        //border: 1px solid red;
+        padding: 0px 35px;
+
+      
+    }
+}
+
+@media only screen and (min-width: 1024px){
+    .mainContainer{
+        //border: 1px solid red;
+        //padding: 0px 50px;
+        padding: 0px;
+        width: calc(100% - 100px);
+        margin: auto;
+        left: 0px;
+        right: 0px;
+    }
+}
+
+@media only screen and (min-width: 1200px){
+    .mainContainer{
+        //border: 1px solid red;
+        padding: 0px 80px;
+    }
+}
